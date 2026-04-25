@@ -1,3 +1,4 @@
+from register import register
 def University_System_Menu():
     while True:
         choice=input("University System: (A)dmin, (S)tudent, or X: ").upper()
@@ -12,15 +13,13 @@ def University_System_Menu():
             break
         else:
             print("Error")    
-        
-
-            
+                  
     
 def Student_System():
     while True:
         Choice=input("Student System (l/r/x): ").lower()
         if Choice=="r":
-            #Student_Sign_Up
+            register()
             pass
         elif Choice=="l":
             #Student_Sign_In
