@@ -47,15 +47,14 @@ class LoginWindow:
         self.password_field.grid(column=1, row=1, padx=5, pady=5)        
 
         # login button at the lower part of the window
-        login_button = tk.Button(login_label_frame, text="Login")
-        login_button.grid(column=1, row=3, padx=5, pady=5, sticky=tk.E)
-        self.login_window.bind('<Return>', lambda event: self.OnLoginClick()) # Bind the Enter key to trigger the login button click event
+        self.login_button = tk.Button(login_label_frame, text="Login")
+        self.login_button.grid(column=1, row=3, padx=5, pady=5, sticky=tk.E)
 
         # cancel button at the lower part of the window
-        cancel_button = tk.Button(login_label_frame, text="Cancel",command=self.login_window.destroy) # command invokes a function to close root window when clicked
-        cancel_button.grid(column=1, row=3, padx=5, pady=5, sticky=tk.W)
+        self.cancel_button = tk.Button(login_label_frame, text="Cancel",command=self.login_window.destroy) # command invokes a function to close root window when clicked
+        self.cancel_button.grid(column=1, row=3, padx=5, pady=5, sticky=tk.W)
 
-        # Create a StringVar to hold the message of login stats (success / failure)
+        # Create a StringVar to hold the message of login status (success / failure)
         self.status_message = tk.StringVar()
         self.status_message.set("") # Start empty
 
@@ -63,10 +62,10 @@ class LoginWindow:
         self.message_label = tk.Label(self.login_window, textvariable=self.status_message, fg="black", bg="white")
         self.message_label.place(relx=0.5, rely=0.85, anchor="center")
 
-        # Add a method for LoginController to call
-        def update_message(self, text, color="red"):
-            self.status_message.set(text)
-            self.message_label.config(fg=color)
+    # Add a method for LoginController to call
+    def update_message(self, text, color="red"):
+        self.status_message.set(text)
+        self.message_label.config(fg=color)
 
     def open_enrolment_system(self):
         # to complete after the enrolment window is implemented
