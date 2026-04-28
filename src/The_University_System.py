@@ -12,7 +12,7 @@ def University_System_Menu():
             admin_controller = AdminControllerClass(database)
 
             while True:
-                admin_selection = Admin_System()
+                admin_selection = Admin_System() #hello there
                 
 
                 if (admin_selection == 'c'): # Clear all data on students.data (done)
