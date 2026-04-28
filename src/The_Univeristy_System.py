@@ -20,10 +20,12 @@ def University_System_Menu():
                 print(database.students[0].name)
                 
             elif (student_selection == 'l'):
-                pass
-            
+                print("Student Log In")
+                student_controller=StudentControllerClass(database)
+                student_controller.login()
+                
             elif (student_selection == 'x'):
-                pass
+                continue
             
         elif choice =="X":
             print("Thank You")
