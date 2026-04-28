@@ -61,7 +61,7 @@ class SubjectEnrolmentSystem:
         self.student.subjects.append(new_subject)
         
         # Requirement: Read/Write to file (Save progress to students.data)
-        self.db.update_student(self.student) 
+        self.db.update_student(self.student) # what is the db ? is it from database class?
         
         # Matches Sample I/O output format
         print(f"Enrolling in Subject-{new_subject.id}")

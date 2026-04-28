@@ -1,12 +1,13 @@
 import re
 from student_class import Student
- 
+from database_class import DatabaseClass
+
 class StudentControllerClass:
     def __init__(self, database):
         self.database = database
     
     def register(self):
-        name=input("Input name: ")
+        name = input("Input name: ")
         while True:
             
             email = input("Input email in the format of @univeristy.com: ")
@@ -23,6 +24,23 @@ class StudentControllerClass:
             else:
                 print("Incorrect email or password format.")
                 
+    def login(self):
+        email = input("Email: ")
+        password= input("Password: ")
+        
+        student = None
+        
+        if self.validate_email(email) and self.validate_password(password):
+            print("email and password format accpetable")
+            student = self.database.find_student(email,password)
+            if student:
+                self.student_course_menu()
+            else:
+                print("Student does not exist.")
+        else:
+            print("Incorrect email or password format.")
+        
+                
     #Validate function   
     def validate_email(self, email):
         email_pattern=r"[a-zA-Z]+\.[a-zA-Z]+@university\.com" #[] whatever can work, . must be exact, [] whatever can work, @univeristy exact, .com exact
@@ -37,3 +55,24 @@ class StudentControllerClass:
             return True
         else:
             return False
+        
+     # Need to link to sarah enrollment part but i think she has the same mennu done in her part 
+  
+    def student_course_menu(self):
+        while True:
+            choice = input("Student Course Menu (c/e/r/s/x)").lower()
+        
+            if choice =="c":
+                print('c')
+            elif choice =="e":
+                print("e")
+            elif choice =='r':
+                print("r")
+            elif choice =="s":
+                print("s")
+            elif choice =="x":
+                print("x")
+                break
+            else:
+                print("iNVALID")
+    
