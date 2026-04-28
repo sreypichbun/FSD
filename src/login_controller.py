@@ -1,4 +1,3 @@
-from student_controller import StudentControllerClass
 class LoginController:
     def __init__(self, model, view):
         self.model = model
@@ -6,6 +5,7 @@ class LoginController:
         
         self.view.login_button.config(command=self.on_login_click) # actions when the login button is clicked
         self.view.cancel_button.config(command=self.view.login_window.destroy) # actions when the cancel button is clicked
+        self.view.login_window.bind('<Return>', lambda event: self.on_login_click()) # Bind the Enter key to trigger the login button click event
 
     def on_login_click(self):
         # Get email address and password from user input in view
