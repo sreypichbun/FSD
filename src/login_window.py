@@ -67,10 +67,6 @@ class LoginWindow:
         self.status_message.set(text)
         self.message_label.config(fg=color)
 
-    def open_enrolment_system(self):
-        # to complete after the enrolment window is implemented
-        pass
-
     def run(self):
         self.login_window.mainloop()
 
