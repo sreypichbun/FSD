@@ -13,10 +13,13 @@ class LoginController:
         password = self.view.password_text.get()
         
         # Controller asks the Model (Database class) to check credentials
-        # dependent on the DB set up, come back after completing DB logic
-        if self.model.validate_email(email) and self.model.validate_password(password):
+        student = self.model.find_student(email,password)
+        if student:
             self.view.update_message("Login Successful!", color="green") # Update the message in the view to show success
-            self.view.login_window.destroy() # Close the login window
-            self.open_enrolment_system() # Call a function to open the enrolment system window
+            self.view.login_window.after(1000, self.complete_login)
         else:
             self.view.update_message("Please verify your Email/Password, and whether the “Caps Lock” key is pressed on your keyboard, and retry.", color="red") # Update the message in the view to show failure
+
+    def complete_login(self):
+        self.view.login_window.destroy() # Close the login window
+        self.open_enrolment_system() # Call a function to open the enrolment system window
