@@ -15,10 +15,10 @@ class LoginController:
         # Controller asks the Model (Database class) to check credentials
         student = self.model.find_student(email,password)
         if student:
-            self.view.update_message("Login Successful!", color="green") # Update the message in the view to show success
+            self.view.update_message("Login Successful!", color="green") # Update the message in the view for successful login
             self.view.login_window.after(1000, self.complete_login)
         else:
-            self.view.update_message("Incorrect email or password format.", color="red") # Update the message in the view to show failure
+            self.view.update_message("Incorrect email or password format.", color="red") # Update the message in the view for failed login
 
     def complete_login(self):
         self.view.login_window.destroy() # Close the login window
