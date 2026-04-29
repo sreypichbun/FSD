@@ -69,8 +69,3 @@ class LoginWindow:
 
     def run(self):
         self.login_window.mainloop()
-
-# Start the GUI event loop
-if __name__ == "__main__":
-    app = LoginWindow()
-    app.run()
