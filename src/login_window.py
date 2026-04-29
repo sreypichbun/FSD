@@ -5,15 +5,13 @@ class LoginWindow:
         self.login_window = tk.Tk() # Create / instantiate an instance of the login window
         self.login_window.title("GUIUniApp - Login") # Set window title (title bar at the top)
         
-        # Calculate position coordinates
+        # Set the window at the center of the screen
         LOGIN_WINDOW_WIDTH = 450
         LOGIN_WINDOW_HEIGHT = 300
         x = (self.login_window.winfo_screenwidth() // 2) - (LOGIN_WINDOW_WIDTH // 2)
         y = (self.login_window.winfo_screenheight() // 2) - (LOGIN_WINDOW_HEIGHT // 2)
-        
         self.login_window.geometry(f'{LOGIN_WINDOW_WIDTH}x{LOGIN_WINDOW_HEIGHT}+{x}+{y}') # Set the geometry (width x height + x_offset + y_offset)
         
-        # self.login_window.geometry("300x200") # Set window size
         self.login_window.config(background="white") # Set window background color
         self.login_window.resizable(False, False) # Window is not resizable
 
@@ -21,36 +19,36 @@ class LoginWindow:
         welcome_label = tk.Label(self.login_window, text="Welcome to GUIUniApp", bg="white", fg="black", font="Helvetica 12 bold")
         welcome_label.place(relx=0.5, rely=0.1, anchor="n")
 
-        # label frame to contain email and password fields
+        # Label frame to contain email and password fields
         login_label_frame = tk.LabelFrame(self.login_window, text="Log in with your school email address", bg="white", fg="black", font="Helvetica 10 bold")
         login_label_frame.columnconfigure(0, weight=1)
         login_label_frame.columnconfigure(1, weight=3)
         login_label_frame.place(relx=0.5, rely=0.5, relwidth=0.57, anchor="center")
 
-        # the text "email" on the left
+        # Text "email" on the left
         email_label = tk.Label(login_label_frame, text="Email:", justify="left", bg="white", fg="black", font="Helvetica 10 bold")
         email_label.grid(column=0, row=0, padx=5, pady=5, sticky=tk.W)
 
-        # the text "password" on the left
+        # Text "password" on the left
         password_label = tk.Label(login_label_frame, text="Password:", justify="left", bg="white", fg="black", font="Helvetica 10 bold")
         password_label.grid(column=0, row=1, padx=5, pady=5, sticky=tk.W)
 
-        # input for email
+        # Input for email
         self.email_text = tk.StringVar()
         self.email_field = tk.Entry(login_label_frame, textvariable=self.email_text)
         self.email_field.grid(column=1, row=0, padx=5, pady=5)
         self.email_field.focus()
 
-        # input for password
+        # Input for password
         self.password_text = tk.StringVar()
         self.password_field = tk.Entry(login_label_frame, textvariable=self.password_text, show="*")
         self.password_field.grid(column=1, row=1, padx=5, pady=5)        
 
-        # login button at the lower part of the window
+        # Login button at the lower part of the window
         self.login_button = tk.Button(login_label_frame, text="Login")
         self.login_button.grid(column=1, row=3, padx=5, pady=5, sticky=tk.E)
 
-        # cancel button at the lower part of the window
+        # Cancel button at the lower part of the window
         self.cancel_button = tk.Button(login_label_frame, text="Cancel",command=self.login_window.destroy) # command invokes a function to close root window when clicked
         self.cancel_button.grid(column=1, row=3, padx=5, pady=5, sticky=tk.W)
 
